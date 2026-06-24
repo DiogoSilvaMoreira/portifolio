@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diogo Moreira | Criação de Sites de Alta Conversão</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Desenvolvedor web especialista na criação de sites profissionais e de alta conversão para psicólogos, terapeutas, advogados, clínicas e pequenos negócios em Alfenas - MG. Coloque sua marca no Google e atraia clientes via WhatsApp.">
+    <meta name="keywords" content="criação de sites, desenvolvedor web, sites para psicólogos, sites para terapeutas, sites para advogados, Alfenas MG, web design freelancer, landing page conversão, design de sites">
+    <meta name="author" content="Diogo Moreira">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diogomoreira.dev.br/">
+    <meta property="og:title" content="Diogo Moreira | Sites Profissionais que Geram Clientes">
+    <meta property="og:description" content="Desenvolvo sites ultravelozes e otimizados para o Google, focados em converter visitantes em agendamentos pelo WhatsApp.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Diogo Moreira | Criação de Sites em Alfenas">
+    <meta property="twitter:description" content="Transforme a presença digital do seu negócio. Sites de alta conversão para profissionais liberais e pequenas empresas.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Diogo Moreira - Desenvolvimento de Sites",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+      "description": "Desenvolvimento de sites profissionais e landing pages de alta conversão para clínicas, advogados, terapeutas e pequenos negócios.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Alfenas",
+        "addressRegion": "MG",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-21.4251",
+        "longitude": "-45.9472"
+      },
+      "url": "https://diogomoreira.dev.br",
+      "priceRange": "R$500 - R$2.000"
+    }
+    </script>
+
+    <style>
+        /* =========================================
+           DESIGN SYSTEM PREMIUM (Linear, Vercel, Stripe)
+           ========================================= */
+        :root {
+            --bg-main: #030303;
+            --bg-card: #0a0a0a;
+            --bg-card-hover: #121212;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f5f5f7;
+            --text-secondary: #8e8e93;
+            --brand-primary: #ffffff;
+            --brand-accent: #5e8aff;
+            --success: #34c759;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Sora', sans-serif;
+            --max-width: 1100px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(94, 138, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(94, 138, 255, 0.02) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        /* =========================================
+           HEADER & NAVEGAÇÃO
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px;
+            transition: var(--transition);
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 50px;
+            padding: 12px 24px;
+            background: rgba(10, 14, 26, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .nav-inner.scrolled {
+            background: rgba(10, 14, 26, 0.92);
+            border-color: rgba(94, 138, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--brand-accent);
+        }
+
+        .logo .avatar-mini {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--brand-accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--brand-accent);
+        }
+
+        .nav-cta {
+            background: var(--brand-accent);
+            color: #0A0E1A;
+            padding: 9px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: #7fa0ff;
+            transform: translateY(-1px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        /* Menu Mobile */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(3, 3, 3, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 40px;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .mobile-nav.open {
+            transform: translateY(0);
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--brand-accent);
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            pointer-events: none;
+            background: radial-gradient(ellipse, rgba(94, 138, 255, 0.12) 0%, transparent 65%);
+            z-index: 1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid rgba(94, 138, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .hero-tag span {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #b5b5b5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span.acc {
+            background: linear-gradient(180deg, #7fa0ff 0%, #5e8aff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .hero-ctas {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: #1ebc59;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(94, 138, 255, 0.5);
+            color: var(--brand-accent);
+            background: rgba(94, 138, 255, 0.02);
+        }
+
+        .urgency-badge {
+            font-size: 0.85rem;
+            color: #ff453a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        /* Avatar do Herói (Pequeno para não roubar o foco) */
+        .hero-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+
+        .hero-avatar-box {
+            text-align: center;
+            background: var(--bg-card);
+            padding: 12px 24px 12px 12px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-avatar-box img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--brand-accent);
+        }
+
+        .hero-avatar-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        .hero-avatar-text strong {
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .hero-social-proof {
+            border-top: 1px solid var(--border-color);
+            padding-top: 32px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        .proof-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .proof-number {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--brand-accent);
+        }
+
+        .proof-text {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* =========================================
+           SEÇÕES GERAIS
+           ========================================= */
+        section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            max-width: 650px;
+            margin-bottom: 56px;
+        }
+
+        .section-tag {
+            color: var(--brand-accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-title span {
+            color: var(--brand-accent);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* =========================================
+           CARDS (DIFERENCIAIS E SERVIÇOS)
+           ========================================= */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: rgba(94, 138, 255, 0.3);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+        }
+
+        .card-icon {
+            font-size: 1.2rem;
+            color: var(--brand-accent);
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* =========================================
+           CASES DE SUCESSO
+           ========================================= */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .case-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .case-card:hover {
+            border-color: rgba(94, 138, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .case-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+            filter: brightness(0.85);
+        }
+
+        .case-content {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .case-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .case-segment {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 12px;
+            border-radius: 30px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .case-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .case-result-box {
+            background: rgba(52, 199, 89, 0.03);
+            border: 1px solid rgba(52, 199, 89, 0.12);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .case-result-label {
+            font-size: 0.75rem;
+            color: var(--success);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .case-result-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #e5e5ea;
+        }
+
+        .case-techs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .tech-badge {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .tech-badge:not(:last-child)::after {
+            content: '•';
+            margin-left: 8px;
+        }
+
+        .case-link {
+            margin-top: auto;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .case-card:hover .case-link {
+            color: var(--brand-accent);
+        }
+
+        /* =========================================
+           COMO FUNCIONA
+           ========================================= */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .process-item {
+            position: relative;
+            text-align: center;
+        }
+
+        .process-number {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .process-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .process-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .process-item .card-icon {
+            margin: 0 auto 16px auto;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* =========================================
+           DEPOIMENTOS
+           ========================================= */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 36px;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-text {
+            color: #e5e5ea;
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .author-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .author-info span {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* =========================================
+           SOBRE
+           ========================================= */
+        .about-inner {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: #e5e5ea;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+        }
+
+        /* =========================================
+           CONTATO & FORMULÁRIO
+           ========================================= */
+        .contact-wrapper {
+            max-width: 580px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 44px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #e5e5ea;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px 16px;
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: rgba(94, 138, 255, 0.5);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .form-control.is-valid {
+            border-color: var(--success);
+        }
+
+        .form-control.is-invalid {
+            border-color: #ff453a;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--brand-primary);
+            color: var(--bg-main);
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .guarantee-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .guarantee-box i {
+            color: var(--success);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .guarantee-text h5 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .guarantee-text p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .section-cta-block {
+            margin-top: 48px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .cta-text-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-text-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* =========================================
+           RODAPÉ
+           ========================================= */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            background: #010101;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* =========================================
+           WHATSAPP FLUTUANTE
+           ========================================= */
+        .whatsapp-floating {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: #25d366;
+            color: #ffffff;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-floating:hover {
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+        }
+
+        /* =========================================
+           ANIMAÇÕES E EFEITOS
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           RESPONSIVIDADE MOBILE
+           ========================================= */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero h1, .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-ctas {
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 18px 24px;
+            }
+
+            .hero-image-wrapper {
+                order: -1;
+                justify-content: center;
+            }
+
+            .hero-avatar-box {
+                padding: 8px 16px 8px 8px;
+            }
+            
+            .hero-avatar-box img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero-social-proof {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .cases-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 72px 0;
+            }
+
+            .contact-wrapper {
+                padding: 32px 24px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .whatsapp-floating {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+                bottom: 24px;
+                right: 24px;
+            }
+        }
+    </style>
+</head>
+<body class="grid-bg">
+
+    <header>
+        <div class="container">
+            <div class="nav-inner" id="nav">
+                <!-- Logo com mini avatar (menos de 40px) -->
+                <a href="#" class="logo">
+                    <!-- COLOQUE SUA FOTO AQUI: Salve a 3ª imagem como "avatar.jpg" na pasta do projeto -->
+                    <img src="avatar.jpg" alt="Diogo Moreira" class="avatar-mini" onerror="this.style.display='none'">
+                    diogo<span>.dev</span>
+                </a>
+
+                <nav aria-label="Navegação Principal">
+                    <ul class="nav-menu">
+                        <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+                        <li><a href="#cases" class="nav-link">Projetos</a></li>
+                        <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
+                        <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                        <li><a href="#contato" class="nav-link nav-cta">Solicitar</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <ul class="mobile-nav" id="mobileNav">
+            <button class="mobile-close" id="closeMenu" aria-label="Fechar menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <li><a href="#diferenciais" class="mobile-link">Diferenciais</a></li>
+            <li><a href="#cases" class="mobile-link">Projetos</a></li>
+            <li><a href="#como-funciona" class="mobile-link">Como Funciona</a></li>
+            <li><a href="#sobre" class="mobile-link">Sobre</a></li>
+            <li><a href="#contato" class="mobile-link nav-cta" style="color: #0A0E1A;">Solicitar Orçamento</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span></span> Atendendo Em Todo Brasil
+                </div>
+                
+                <h1>Seu negócio na primeira página do Google. Clientes fechando direto no seu <span class="acc">WhatsApp.</span></h1>
+                
+                <p>Sou especialista em criar sites profissionais e landing pages de alta conversão para psicólogos, terapeutas, advogados, clínicas e pequenos negócios. Transformo visitantes em leads qualificados com design focado em vendas.</p>
+                
+                <div class="hero-ctas">
+                    <a href="https://wa.me/5535999675196?text=Ol%C3%A1%20Diogo,%20vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20site%20para%20o%20meu%20neg%C3%B3cio." class="btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Iniciar Meu Projeto
+                    </a>
+                    <a href="#cases" class="btn-secondary">Ver Portfólio</a>
+                </div>
+
+                <div class="urgency-badge">
+                    <i class="fas fa-exclamation-circle"></i> Vagas abertas para essa semana.
+                </div>
+
+                <div class="hero-social-proof">
+                    <div class="proof-item">
+                        <span class="proof-number">100%</span>
+                        <span class="proof-text">Foco em Conversão</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number">15+</span>
+                        <span class="proof-text">Sites Entregues</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number">2 Dias</span>
+                        <span class="proof-text">Prazo Médio</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number">Suporte</span>
+                        <span class="proof-text">Direto e Personalizado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avatar Pequeno para Autenticidade (menos de 80px) -->
+            <div class="hero-image-wrapper">
+                <div class="hero-avatar-box">
+                    <!-- COLOQUE SUA FOTO AQUI: Salve a 3ª imagem como "hero.jpg" na pasta do projeto -->
+                    <img src="Captura de tela 2026-06-24 110814.png" alt="Diogo Moreira" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'">
+                    <div class="hero-avatar-text">
+                        <strong>Diogo Moreira</strong>
+                        Desenvolvedor Web & UX
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diferenciais" class="reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Diferenciais</span>
+                <h2 class="section-title">A estrutura perfeita para transformar acessos em <span>faturamento</span></h2>
+                <p class="section-subtitle">Seu site não será apenas um cartão de visitas digital, mas sim uma máquina de captação comercial ativa 24 horas por dia.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Site Totalmente Responsivo</h3>
+                    <p>Experiência perfeita para smartphones. Seu cliente agenda consultas com poucos cliques, independentemente do dispositivo.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-search"></i></div>
+                    <h3>Otimização para o Google (SEO)</h3>
+                    <p>Código estruturado seguindo as diretrizes do Google para facilitar seu ranqueamento regional e alcançar novos clientes organicamente.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>Integração Direta com WhatsApp</h3>
+                    <p>Botões estrategicamente posicionados para direcionar o usuário direto para o seu canal de atendimento, gerando leads qualificados.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Carregamento Ultra-rápido</h3>
+                    <p>Páginas extremamente leves que carregam instantaneamente. Menos desistências, maior retenção e melhor posicionamento nos mecanismos de busca.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-server"></i></div>
+                    <h3>Hospedagem Inclusa</h3>
+                    <p>Orientação e configuração nas plataformas de nuvem mais modernas do mercado (Vercel, Netlify), com garantia de estabilidade e segurança.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Suporte Direto e Personalizado</h3>
+                    <p>Comunicação direta comigo via WhatsApp corporativo. Sem intermediários, sem chamados lentos. Agilidade máxima para suas necessidades.</p>
+                </div>
+            </div>
+
+            <div class="section-cta-block">
+                <a href="https://wa.me/5535999675196?text=Ol%C3%A1%20Diogo,%20gostei%20dos%20diferenciais.%20Quero%20um%20site%20para%20o%20meu%20neg%C3%B3cio." class="btn-primary" target="_blank" rel="noopener noreferrer">Quero um Site de Alta Conversão</a>
+                <a href="#cases" class="cta-text-link">Ver cases de sucesso <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="cases" class="reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Cases de Sucesso</span>
+                <h2 class="section-title">Entregando resultado real para os meus <span>clientes</span></h2>
+                <p class="section-subtitle">Soluções digitais de elite desenvolvidas exclusivamente para profissionais liberais e marcas que exigem excelência visual e comercial.</p>
+            </div>
+
+            <div class="cases-grid">
+                <article class="case-card">
+                    <img src="Captura de tela 2026-06-24 091817.png" alt="Case Atel0iê Lu Teixeira" class="case-image" loading="lazy">
+                    <div class="case-content">
+                        <div class="case-meta">
+                            <span class="case-segment">Artesanato & Alta Costura</span>
+                        </div>
+                        <h3 class="case-title">Ateliê Lu Teixeira</h3>
+                        
+                        <div class="case-result-box">
+                            <span class="case-result-label">Resultado Obtido</span>
+                            <p class="case-result-text">Aumento expressivo no direcionamento de leads qualificados diretamente para o WhatsApp comercial, convertendo mais vendas.</p>
+                        </div>
+
+                        <div class="case-techs">
+                            <span class="tech-badge">HTML5 Semântico</span>
+                            <span class="tech-badge">CSS3 Otimizado</span>
+                            <span class="tech-badge">UX/UI Design</span>
+                            <span class="tech-badge">Vercel</span>
+                        </div>
+                        
+                        <a href="https://ateli-lu-teixeira.vercel.app/" target="_blank" rel="noopener noreferrer" class="case-link">Acessar Projeto Online <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <article class="case-card">
+                    <img src="Captura de tela 2026-06-24 091735.png" alt="Case Elisângela Terapeuta Integrativa" class="case-image" loading="lazy">
+                    <div class="case-content">
+                        <div class="case-meta">
+                            <span class="case-segment">Saúde & Bem-Estar</span>
+                        </div>
+                        <h3 class="case-title">Elisângela Terapeuta Integrativa</h3>
+                        
+                        <div class="case-result-box">
+                            <span class="case-result-label">Resultado Obtido</span>
+                            <p class="case-result-text">Posicionamento de autoridade estruturado que permitiu a captação direta de 5 novas clientes na primeira semana de lançamento.</p>
+                        </div>
+
+                        <div class="case-techs">
+                            <span class="tech-badge">UI/UX Minimalista</span>
+                            <span class="tech-badge">SEO Local Alfenas</span>
+                            <span class="tech-badge">Integração WhatsApp</span>
+                            <span class="tech-badge">Performance</span>
+                        </div>
+                        
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="case-link">Acessar Projeto Online <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Metodologia</span>
+                <h2 class="section-title">Do alinhamento estratégico à publicação em 4 <span>etapas</span></h2>
+                <p class="section-subtitle">Um processo transparente, simples e focado em entregar valor comercial e agilidade para o seu negócio.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-item">
+                    <div class="card-icon" style="margin: 0 auto 16px auto; width: 56px; height: 56px; font-size: 1.5rem;"><i class="fas fa-comments"></i></div>
+                    <div class="process-number">01</div>
+                    <h3 class="process-title">Conversa Inicial</h3>
+                    <p class="process-text">Entrevista estratégica para mapear seus objetivos, público-alvo e as dores do seu nicho.</p>
+                </div>
+                <div class="process-item">
+                    <div class="card-icon" style="margin: 0 auto 16px auto; width: 56px; height: 56px; font-size: 1.5rem;"><i class="fas fa-pen-fancy"></i></div>
+                    <div class="process-number">02</div>
+                    <h3 class="process-title">Criação da Prévia</h3>
+                    <p class="process-text">Desenvolvimento do design, arquitetura da informação e copywriting persuasivo alinhado à sua marca.</p>
+                </div>
+                <div class="process-item">
+                    <div class="card-icon" style="margin: 0 auto 16px auto; width: 56px; height: 56px; font-size: 1.5rem;"><i class="fas fa-sliders-h"></i></div>
+                    <div class="process-number">03</div>
+                    <h3 class="process-title">Ajustes Finos</h3>
+                    <p class="process-text">Validação completa em conjunto. Refinamos cada detalhe visual e de texto até a excelência.</p>
+                </div>
+                <div class="process-item">
+                    <div class="card-icon" style="margin: 0 auto 16px auto; width: 56px; height: 56px; font-size: 1.5rem;"><i class="fas fa-rocket"></i></div>
+                    <div class="process-number">04</div>
+                    <h3 class="process-title">Publicação</h3>
+                    <p class="process-text">Configuração de SEO, testes de velocidade e lançamento oficial do site pronto para atrair clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Validação Comercial</span>
+                <h2 class="section-title">Quem já confia em nossos <span>resultados</span></h2>
+                <p class="section-subtitle">A satisfação e o retorno financeiro dos meus clientes são a minha prioridade máxima.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"O Diogo é um profissional incrível. O site ficou super limpo, profissional e extremamente rápido. O melhor de tudo: meus pacientes chegam diariamente pelo link do WhatsApp integrado. Super recomendo!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">D.A</div>
+                        <div class="author-info">
+                            <h4>Dra. Amanda Lima</h4>
+                            <span>Psicóloga Clínica - Alfenas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Precisava de um site para o meu ateliê e encontrei no Diogo a solução perfeita. Ele entendeu exatamente o que eu queria, entregou em 2 dias e o resultado superou minhas expectativas."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">L.T</div>
+                        <div class="author-info">
+                            <h4>Lu Teixeira</h4>
+                            <span>Ateliê de Alta Costura</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="reveal">
+        <div class="container">
+            <div class="about-inner">
+                <div class="section-header">
+                    <span class="section-tag">Quem é o Desenvolvedor</span>
+                    <h2 class="section-title">Transformando código em clientes para o seu <span>negócio</span></h2>
+                </div>
+                <div class="about-text">
+                    <p>Meu nome é <strong>Diogo Moreira</strong>, sou graduando de Ciência da Computação na <strong>UNIFAL-MG</strong> e apaixonado por tecnologia e marketing. Desenvolvo sites profissionais sob medida para pequenos negócios, clínicas, psicólogos, terapeutas e advogados da região de Alfenas.</p>
+                    <p>Meu trabalho vai muito além de entregar um design bonito. Combino código de alto nível com as melhores práticas de UX/UI e copywriting para criar um ativo comercial que trabalha por você 24 horas por dia, gerando autoridade e convertendo visitantes em clientes.</p>
+                    <p>Minha filosofia é simples: atendimento direto, transparência total, código limpo e prazos cumpridos. Você não é só mais um projeto, é um parceiro que terá meu suporte completo desde o briefing até a publicação.</p>
+                </div>
+                <div class="section-cta-block" style="margin-top: 32px;">
+                    <a href="#contato" class="btn-secondary">Conversar pelo WhatsApp <i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="reveal">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin: 0 auto 56px auto;">
+                <span class="section-tag">Contato Direto</span>
+                <h2 class="section-title">Solicitar Análise de <span>Projeto</span></h2>
+                <p class="section-subtitle">Preencha os campos abaixo para avaliarmos sua demanda e agendarmos uma conversa rápida e estratégica.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <form id="project-form" action="#" method="POST" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Seu Nome Completo</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Ex: Roberto Silva" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="segment" class="form-label">Segmento Profissional</label>
+                        <input type="text" id="segment" name="segment" class="form-control" placeholder="Ex: Terapia, Advocacia, Clínica..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp" class="form-label">WhatsApp com DDD</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="Ex: (35) 99999-9999" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Breve descrição da sua necessidade</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Conte resumidamente sobre seu negócio e quais os seus principais objetivos com esse novo site." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Enviar Solicitação Comercial
+                    </button>
+                </form>
+
+                <div class="guarantee-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="guarantee-text">
+                        <h5>Garantia de Satisfação</h5>
+                        <p>Sua aprovação é fundamental. Ofereço suporte pós-publicação para garantir que seu site funcione perfeitamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2026 Diogo Moreira. Todos os direitos reservados.</p>
+            <p>Desenvolvimento de Sites de Alta Performance</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5535999675196?text=Ol%C3%A1%20Diogo,%20gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20neg%C3%B3cio." class="whatsapp-floating" target="_blank" rel="noopener noreferrer" aria-label="Fale comigo diretamente no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Efeito de background fixo ao rolar a página
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 30);
+        });
+
+        // Intersection Observer para animação suave dos elementos
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+        // Menu Mobile Hamburguer
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openMenu() {
+            mobileNav.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenuFn() {
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFn);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenuFn));
+
+        // Validação e Feedback do Formulário
+        document.getElementById('project-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name');
+            const segment = document.getElementById('segment');
+            const whatsapp = document.getElementById('whatsapp');
+            const message = document.getElementById('message');
+            
+            let isValid = true;
+
+            // Validação Simples de Campo Requerido
+            [name, segment, whatsapp, message].forEach(field => {
+                if(!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    field.classList.remove('is-valid');
+                    isValid = false;
+                } else {
+                    field.classList.add('is-valid');
+                    field.classList.remove('is-invalid');
+                }
+            });
+
+            if(!isValid) {
+                alert('Por favor, preencha todos os campos corretamente para que eu possa avaliar seu projeto de forma assertiva.');
+                return;
+            }
+            
+            // Feedback Visual de Sucesso
+            const submitBtn = this.querySelector('.btn-submit');
+            submitBtn.style.backgroundColor = '#34c759';
+            submitBtn.style.color = '#ffffff';
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Solicitação Enviada com Sucesso!';
+            
+            setTimeout(() => {
+                alert('Obrigado pelo envio! Analisarei os detalhes e entrarei em contato via WhatsApp nas próximas horas.');
+                this.reset();
+                // Resetar classes visuais
+                [name, segment, whatsapp, message].forEach(field => {
+                    field.classList.remove('is-valid', 'is-invalid');
+                });
+                submitBtn.style.backgroundColor = 'var(--brand-primary)';
+                submitBtn.style.color = 'var(--bg-main)';
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitação Comercial';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
