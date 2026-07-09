@@ -1587,10 +1587,21 @@
             .hero { padding-top: 130px; }
 
             .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 48px;
+                display: flex;
+                flex-direction: column;
                 text-align: center;
             }
+
+            /* Achata o hero-content para poder reordenar o mockup em relação ao CTA */
+            .hero-content { display: contents; }
+
+            .hero-tag { order: 1; }
+            .hero-title-anim { order: 2; }
+            .hero p.lead { order: 3; }
+            .hero-ctas { order: 4; }
+            .hero-visual { order: 5; margin-bottom: 30px; }
+            .urgency-badge { order: 6; }
+            .hero-social-proof { order: 7; }
 
             .hero h1, .hero p.lead {
                 margin-left: auto;
@@ -1614,8 +1625,6 @@
 
             .urgency-badge { justify-content: center; width: 100%; }
 
-            .hero-visual { order: -1; }
-
             .hero-social-proof {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 22px;
@@ -1633,7 +1642,10 @@
 
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            .menu-toggle { display: block; }
+            .menu-toggle {
+                display: block;
+                padding: 12px 14px;
+            }
 
             section { padding: 76px 0; }
 
@@ -1654,6 +1666,47 @@
             }
 
             .phone-card { max-width: 320px; padding: 18px; }
+
+            /* Performance: desativa mesh com blur e spotlight de mouse (não existem em touch) */
+            .hero-mesh, .hero-spotlight { display: none; }
+
+            /* Áreas de toque confortáveis no menu mobile */
+            .mobile-close { padding: 12px; }
+            .mobile-nav a { display: inline-block; padding: 10px 0; }
+
+            /* Evita zoom automático do iOS ao focar campos do formulário */
+            .form-control, select.form-control, textarea.form-control {
+                font-size: 16px;
+            }
+
+            /* Aumenta a área de toque de links inline sem alterar o texto */
+            .case-link, .cta-text-link {
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card, .service-card, .process-item {
+                padding: 22px;
+            }
+
+            .case-content {
+                padding: 22px;
+            }
+
+            /* Leitura confortável: nenhum texto de corpo abaixo de 16px */
+            .card p, .service-card p, .process-text, .case-result-text, .services-support-text {
+                font-size: 1rem;
+            }
+
+            .services-diagram {
+                padding: 20px 14px;
+                gap: 14px;
+            }
+
+            .contact-wrapper {
+                padding: 28px 20px;
+            }
         }
     </style>
 </head>
@@ -2156,11 +2209,24 @@
         // WhatsApp flutuante: só aparece depois do hero
         const waFloat = document.getElementById('waFloat');
         const heroEl = document.querySelector('.hero');
+        let overContactForm = false;
         function toggleWaFloat() {
-            waFloat.classList.toggle('visible', window.scrollY > heroEl.offsetHeight * 0.6);
+            const hideForForm = window.matchMedia('(max-width: 768px)').matches && overContactForm;
+            waFloat.classList.toggle('visible', window.scrollY > heroEl.offsetHeight * 0.6 && !hideForForm);
         }
         window.addEventListener('scroll', toggleWaFloat, { passive: true });
         toggleWaFloat();
+
+        // No mobile, esconde o botão flutuante enquanto o formulário de contato
+        // está na tela, para não cobrir o botão "Enviar pelo WhatsApp"
+        const contatoSection = document.getElementById('contato');
+        if (contatoSection) {
+            const contactObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => { overContactForm = entry.isIntersecting; });
+                toggleWaFloat();
+            }, { threshold: 0.15 });
+            contactObserver.observe(contatoSection);
+        }
 
         // Spotlight que segue o mouse no hero (desktop)
         if (hasFinePointer && !reduceMotion) {
