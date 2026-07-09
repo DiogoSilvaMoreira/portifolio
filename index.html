@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diogo Moreira | Criação de Sites de Alta Conversão</title>
+    <title>Diogo Moreira | Sites, Redes Sociais e Tráfego Pago</title>
 
     <!-- SEO & Meta Tags -->
-    <meta name="description" content="Desenvolvedor web especialista na criação de sites profissionais e de alta conversão para psicólogos, terapeutas, advogados, clínicas e pequenos negócios em Alfenas - MG. Coloque sua marca no Google e atraia clientes via WhatsApp.">
-    <meta name="keywords" content="criação de sites, desenvolvedor web, sites para psicólogos, sites para terapeutas, sites para advogados, Alfenas MG, web design freelancer, landing page conversão, design de sites">
+    <meta name="description" content="Ajudo pequenos negócios a crescerem no digital com sites profissionais, gestão de redes sociais e tráfego pago — soluções digitais completas para psicólogos, terapeutas, advogados, clínicas e pequenos negócios em Alfenas - MG. Atendimento direto via WhatsApp.">
+    <meta name="keywords" content="criação de sites, desenvolvedor web, gestão de redes sociais, tráfego pago, gestão de anúncios, social media, marketing digital, sites para psicólogos, sites para terapeutas, sites para advogados, Alfenas MG, web design freelancer, landing page conversão, design de sites">
     <meta name="author" content="Diogo Moreira">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://diogomoreira.dev.br/">
-    <meta property="og:title" content="Diogo Moreira | Sites Profissionais que Geram Clientes">
-    <meta property="og:description" content="Desenvolvo sites ultravelozes e otimizados para o Google, focados em converter visitantes em agendamentos pelo WhatsApp.">
+    <meta property="og:title" content="Diogo Moreira | Sites, Redes Sociais e Tráfego Pago">
+    <meta property="og:description" content="Soluções digitais completas: sites profissionais, gestão de redes sociais e anúncios para trazer mais clientes pelo WhatsApp.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80">
 
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Diogo Moreira | Criação de Sites em Alfenas">
-    <meta property="twitter:description" content="Transforme a presença digital do seu negócio. Sites de alta conversão para profissionais liberais e pequenas empresas.">
+    <meta property="twitter:title" content="Diogo Moreira | Sites, Redes Sociais e Tráfego Pago">
+    <meta property="twitter:description" content="Soluções digitais completas para pequenos negócios: sites, redes sociais e anúncios trabalhando juntos para trazer clientes.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,14 +30,17 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23070b14'/%3E%3Ctext x='50' y='69' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%23e3b458' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "name": "Diogo Moreira - Desenvolvimento de Sites",
+      "name": "Diogo Moreira - Sites, Redes Sociais e Tráfego Pago",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
-      "description": "Desenvolvimento de sites profissionais e landing pages de alta conversão para clínicas, advogados, terapeutas e pequenos negócios.",
+      "description": "Sites profissionais, gestão de redes sociais e anúncios (tráfego pago) para clínicas, advogados, terapeutas e pequenos negócios.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Alfenas",
@@ -84,10 +87,18 @@
             --radius: 18px;
             --radius-sm: 12px;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-card: cubic-bezier(0.4, 0, 0.2, 1);
             --transition: all 0.35s var(--ease);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* Scrollbar customizada */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #1c2540; border-radius: 10px; border: 2px solid var(--bg); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+        html { scrollbar-color: #1c2540 var(--bg); scrollbar-width: thin; }
 
         html { scroll-behavior: smooth; }
 
@@ -192,7 +203,17 @@
             transition: var(--transition);
         }
 
-        .nav-link:hover { color: var(--gold-bright); }
+        .nav-link:hover, .nav-link.active { color: var(--gold-bright); }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+            z-index: 1100;
+            transition: width 0.1s linear;
+        }
 
         .nav-cta {
             background: var(--gold);
@@ -287,6 +308,44 @@
             z-index: 1;
         }
 
+        /* Mesh de fundo — profundidade sutil, movimento lentíssimo */
+        .hero-mesh {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .mesh-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            will-change: transform;
+        }
+
+        .mesh-blob.b1 { width: 520px; height: 520px; background: #2f5aff; top: -12%; left: -8%; animation: meshFloat1 36s ease-in-out infinite; }
+        .mesh-blob.b2 { width: 420px; height: 420px; background: #1e3fae; top: 22%; right: -10%; animation: meshFloat2 42s ease-in-out infinite; }
+        .mesh-blob.b3 { width: 380px; height: 380px; background: #3d6bff; bottom: -18%; left: 32%; animation: meshFloat3 48s ease-in-out infinite; }
+
+        @keyframes meshFloat1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(50px, 36px); } }
+        @keyframes meshFloat2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-46px, 54px); } }
+        @keyframes meshFloat3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(38px, -46px); } }
+
+        /* Spotlight que acompanha o mouse (desktop) */
+        .hero-spotlight {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            background: radial-gradient(600px circle at var(--sx, 50%) var(--sy, 50%), rgba(227, 180, 88, 0.10), transparent 60%);
+        }
+
+        .hero:hover .hero-spotlight { opacity: 1; }
+
         .hero-grid {
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
@@ -350,6 +409,18 @@
             letter-spacing: -0.03em;
             margin-bottom: 24px;
             color: var(--text);
+        }
+
+        .hero-title-anim .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: wordIn 0.6s var(--ease) forwards;
+            animation-delay: calc(var(--i, 0) * 60ms + 150ms);
+        }
+
+        @keyframes wordIn {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 .acc {
@@ -652,6 +723,54 @@
         }
 
         /* ================================================
+           MARQUEE DE TECNOLOGIAS
+           ================================================ */
+        .tech-marquee {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-raised);
+            padding: 22px 0;
+            overflow: hidden;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 56px;
+            animation: marqueeScroll 32s linear infinite;
+        }
+
+        .tech-marquee:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes marqueeScroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        .marquee-group {
+            display: flex;
+            gap: 56px;
+            flex-shrink: 0;
+        }
+
+        .marquee-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .marquee-item i {
+            color: var(--gold);
+            font-size: 1.05rem;
+        }
+
+        /* ================================================
            SEÇÕES GERAIS
            ================================================ */
         section {
@@ -701,6 +820,134 @@
         }
 
         /* ================================================
+           SERVIÇOS
+           ================================================ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 56px;
+        }
+
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: transform 0.3s var(--ease-card), box-shadow 0.3s var(--ease-card), border-color 0.3s var(--ease-card), background-color 0.3s var(--ease-card);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(227, 180, 88, 0.55), transparent 65%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-card);
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-4px);
+            background: var(--card-hover);
+            box-shadow: 0 20px 45px rgba(10, 20, 45, 0.35);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .service-card--featured {
+            border-color: var(--border-strong);
+            background: linear-gradient(170deg, var(--card-hover) 0%, var(--card) 100%);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: -12px; left: 28px;
+            background: var(--gold);
+            color: #201708;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 5px 14px;
+            border-radius: 20px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .services-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px 24px;
+            max-width: 880px;
+            margin: 0 auto 22px auto;
+            text-align: center;
+        }
+
+        .diagram-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .diagram-item strong {
+            font-family: var(--font-display);
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .diagram-item small {
+            font-size: 0.74rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .diagram-item.diagram-result strong { color: var(--gold-bright); }
+
+        .diagram-op {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .services-support-text {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.96rem;
+            max-width: 560px;
+            margin: 0 auto 32px auto;
+        }
+
+        /* ================================================
            DIFERENCIAIS (CARDS)
            ================================================ */
         .grid-3 {
@@ -714,7 +961,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 32px;
-            transition: var(--transition);
+            transition: transform 0.3s var(--ease-card), box-shadow 0.3s var(--ease-card), border-color 0.3s var(--ease-card), background-color 0.3s var(--ease-card);
             position: relative;
             overflow: hidden;
         }
@@ -733,6 +980,7 @@
             border-color: var(--border-strong);
             transform: translateY(-4px);
             background: var(--card-hover);
+            box-shadow: 0 20px 45px rgba(10, 20, 45, 0.35);
         }
 
         .card:hover::after { opacity: 1; }
@@ -780,15 +1028,34 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
+            transition: transform 0.3s var(--ease-card), box-shadow 0.3s var(--ease-card), border-color 0.3s var(--ease-card);
             text-decoration: none;
             color: inherit;
+            position: relative;
         }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(227, 180, 88, 0.55), transparent 65%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-card);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .case-card:hover::before { opacity: 1; }
 
         .case-card:hover {
             border-color: var(--border-strong);
             transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(10, 20, 45, 0.45);
         }
 
         .case-image-wrap {
@@ -837,6 +1104,15 @@
             border-radius: 30px;
             color: var(--gold);
             border: 1px solid var(--border-strong);
+        }
+
+        .case-service-tag {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .case-title {
@@ -925,12 +1201,13 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 32px 26px;
-            transition: var(--transition);
+            transition: transform 0.3s var(--ease-card), box-shadow 0.3s var(--ease-card), border-color 0.3s var(--ease-card);
         }
 
         .process-item:hover {
             border-color: var(--border-strong);
             transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(10, 20, 45, 0.35);
         }
 
         .process-item::before {
@@ -1048,6 +1325,19 @@
         }
 
         .form-control::placeholder { color: #5d6578; }
+
+        select.form-control {
+            appearance: none;
+            -webkit-appearance: none;
+            color: var(--text);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238d95a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 42px;
+            cursor: pointer;
+        }
+
+        select.form-control:invalid { color: #5d6578; }
 
         .form-control:focus {
             outline: none;
@@ -1191,11 +1481,61 @@
             text-decoration: none;
             z-index: 999;
             transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(14px) scale(0.9);
+        }
+
+        .whatsapp-floating.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
         }
 
         .whatsapp-floating:hover {
             transform: scale(1.07) translateY(-4px);
             box-shadow: 0 14px 34px rgba(37, 211, 102, 0.45);
+        }
+
+        .whatsapp-floating::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.5);
+            opacity: 0;
+            animation: waPulseRing 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes waPulseRing {
+            0%, 90% { opacity: 0; transform: scale(1); }
+            93% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.6); }
+        }
+
+        .wa-tooltip {
+            position: absolute;
+            right: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%) translateX(6px);
+            background: var(--card);
+            color: var(--text);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 8px;
+            white-space: nowrap;
+            border: 1px solid var(--border);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s var(--ease-card), transform 0.25s var(--ease-card);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .whatsapp-floating:hover .wa-tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
         }
 
         /* ================================================
@@ -1212,6 +1552,17 @@
             transform: translateY(0);
         }
 
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+        }
+
+        .reveal-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ================================================
            MOVIMENTO REDUZIDO (acessibilidade)
            ================================================ */
@@ -1222,8 +1573,11 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-            .hero-seq, .bubble, .reveal { opacity: 1 !important; transform: none !important; }
+            .hero-seq, .bubble, .reveal, .reveal-item, .word { opacity: 1 !important; transform: none !important; }
             .typing { display: none; }
+            .marquee-track { animation: none !important; transform: none !important; }
+            .mesh-blob { animation: none !important; }
+            .whatsapp-floating::after { animation: none !important; }
         }
 
         /* ================================================
@@ -1270,6 +1624,9 @@
 
             .cases-grid { grid-template-columns: 1fr; }
 
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card--featured { order: -1; }
+
             .process-grid { grid-template-columns: repeat(2, 1fr); }
             .process-item::after { display: none; }
         }
@@ -1302,6 +1659,8 @@
 </head>
 <body>
 
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <header>
         <div class="container">
             <div class="nav-inner" id="nav">
@@ -1312,6 +1671,7 @@
 
                 <nav aria-label="Navegação Principal">
                     <ul class="nav-menu">
+                        <li><a href="#servicos" class="nav-link">Serviços</a></li>
                         <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
                         <li><a href="#cases" class="nav-link">Projetos</a></li>
                         <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
@@ -1331,6 +1691,7 @@
             <button class="mobile-close" id="closeMenu" aria-label="Fechar menu">
                 <i class="fas fa-times"></i>
             </button>
+            <li><a href="#servicos" class="mobile-link">Serviços</a></li>
             <li><a href="#diferenciais" class="mobile-link">Diferenciais</a></li>
             <li><a href="#cases" class="mobile-link">Projetos</a></li>
             <li><a href="#como-funciona" class="mobile-link">Como Funciona</a></li>
@@ -1340,16 +1701,22 @@
     </header>
 
     <section class="hero">
+        <div class="hero-mesh" aria-hidden="true">
+            <div class="mesh-blob b1"></div>
+            <div class="mesh-blob b2"></div>
+            <div class="mesh-blob b3"></div>
+        </div>
         <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-spotlight" id="heroSpotlight" aria-hidden="true"></div>
         <div class="container hero-grid">
             <div class="hero-content">
                 <div class="hero-tag hero-seq d1">
                     <span></span> Atendendo em todo o Brasil
                 </div>
 
-                <h1 class="hero-seq d2">Sites que trazem <span class="acc">clientes</span> direto para você.</h1>
+                <h1 class="hero-title-anim"><span class="word" style="--i:0">Sites</span> <span class="word" style="--i:1">que</span> <span class="word" style="--i:2">trazem</span> <span class="word" style="--i:3"><span class="acc">clientes</span></span> <span class="word" style="--i:4">direto</span> <span class="word" style="--i:5">para</span> <span class="word" style="--i:6">você.</span></h1>
 
-                <p class="lead hero-seq d3">Se você atende pessoas e quer mais clientes chegando, eu crio o site certo pra isso — <strong>encontrável no Google e com contato direto no seu WhatsApp</strong>.</p>
+                <p class="lead hero-seq d3">Se você atende pessoas e quer mais clientes chegando, eu monto a base certa pra isso: um <strong>site encontrável no Google</strong>, redes sociais que passam confiança e anúncios que trazem gente nova — tudo com contato direto no seu WhatsApp.</p>
 
                 <div class="hero-ctas hero-seq d4">
                     <a href="https://wa.me/5535999675196?text=Ol%C3%A1%20Diogo,%20vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20site%20para%20o%20meu%20neg%C3%B3cio." class="btn-primary" target="_blank" rel="noopener noreferrer">
@@ -1364,15 +1731,15 @@
 
                 <div class="hero-social-proof hero-seq d6">
                     <div class="proof-item">
-                        <span class="proof-number">100%</span>
+                        <span class="proof-number" data-count="100" data-suffix="%">100%</span>
                         <span class="proof-text">Foco em Conversão</span>
                     </div>
                     <div class="proof-item">
-                        <span class="proof-number">15+</span>
+                        <span class="proof-number" data-count="15" data-suffix="+">15+</span>
                         <span class="proof-text">Sites Entregues</span>
                     </div>
                     <div class="proof-item">
-                        <span class="proof-number">2 dias</span>
+                        <span class="proof-number" data-count="2" data-suffix=" dias">2 dias</span>
                         <span class="proof-text">Prazo Médio</span>
                     </div>
                     <div class="proof-item">
@@ -1418,6 +1785,79 @@
         </div>
     </section>
 
+    <div class="tech-marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-group">
+                <span class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</span>
+                <span class="marquee-item"><i class="fa-brands fa-react"></i> React</span>
+                <span class="marquee-item"><i class="fas fa-bolt"></i> Next.js</span>
+                <span class="marquee-item"><i class="fas fa-database"></i> Supabase</span>
+                <span class="marquee-item"><i class="fas fa-cloud"></i> Vercel</span>
+                <span class="marquee-item"><i class="fa-brands fa-facebook"></i> Meta Ads</span>
+                <span class="marquee-item"><i class="fa-brands fa-instagram"></i> Instagram</span>
+                <span class="marquee-item"><i class="fa-brands fa-figma"></i> Figma</span>
+            </div>
+            <div class="marquee-group">
+                <span class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</span>
+                <span class="marquee-item"><i class="fa-brands fa-react"></i> React</span>
+                <span class="marquee-item"><i class="fas fa-bolt"></i> Next.js</span>
+                <span class="marquee-item"><i class="fas fa-database"></i> Supabase</span>
+                <span class="marquee-item"><i class="fas fa-cloud"></i> Vercel</span>
+                <span class="marquee-item"><i class="fa-brands fa-facebook"></i> Meta Ads</span>
+                <span class="marquee-item"><i class="fa-brands fa-instagram"></i> Instagram</span>
+                <span class="marquee-item"><i class="fa-brands fa-figma"></i> Figma</span>
+            </div>
+        </div>
+    </div>
+
+    <section id="servicos" class="reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Serviços</span>
+                <h2 class="section-title">Três frentes trabalhando juntas para trazer <span>clientes</span> até você</h2>
+                <p class="section-subtitle">Site, redes sociais e anúncios — cada um cumprindo um papel específico na jornada do seu cliente até o seu WhatsApp.</p>
+            </div>
+
+            <div class="grid-3 services-grid">
+                <div class="service-card service-card--featured">
+                    <span class="service-badge">Carro-chefe</span>
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Criação de Sites</h3>
+                    <p>Seu endereço oficial na internet: um site rápido, bonito e fácil de encontrar no Google, feito pra transformar visita em contato pelo WhatsApp.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-hashtag"></i></div>
+                    <h3>Redes Sociais</h3>
+                    <p>Presença constante e profissional no Instagram e demais redes, construindo confiança e autoridade pro seu negócio todos os dias.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Anúncios</h3>
+                    <p>Seu negócio na frente de quem já está procurando o que você oferece, trazendo gente nova pro seu WhatsApp toda semana.</p>
+                </div>
+            </div>
+
+            <div class="services-diagram">
+                <div class="diagram-item"><strong>Site</strong><small>(base)</small></div>
+                <span class="diagram-op">+</span>
+                <div class="diagram-item"><strong>Redes</strong><small>(autoridade)</small></div>
+                <span class="diagram-op">+</span>
+                <div class="diagram-item"><strong>Anúncios</strong><small>(tráfego)</small></div>
+                <span class="diagram-op">=</span>
+                <div class="diagram-item diagram-result"><strong>Clientes chegando todo dia</strong></div>
+            </div>
+            <p class="services-support-text">Contratando 2 ou mais serviços, você tem condição especial. Vamos montar o plano ideal pro seu negócio.</p>
+
+            <div class="section-cta-block" style="justify-content: center;">
+                <a href="https://wa.me/5535999675196?text=Ol%C3%A1%20Diogo,%20quero%20montar%20um%20plano%20de%20crescimento%20com%20site%2C%20redes%20e%2Fou%20an%C3%BAncios%20para%20o%20meu%20neg%C3%B3cio." class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Montar meu plano de crescimento</a>
+            </div>
+        </div>
+    </section>
+
     <section id="diferenciais" class="reveal">
         <div class="container">
             <div class="section-header">
@@ -1457,6 +1897,16 @@
                     <h3>Suporte Direto e Personalizado</h3>
                     <p>Comunicação direta comigo via WhatsApp. Sem intermediários, sem chamados lentos. Agilidade máxima para suas necessidades.</p>
                 </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-diagram-project"></i></div>
+                    <h3>Estratégia Integrada</h3>
+                    <p>Site, redes e anúncios trabalhando juntos, não em partes soltas — cada um reforçando o resultado do outro.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>Um Único Responsável</h3>
+                    <p>Você fala com uma pessoa só que cuida de tudo — sem agência cara, sem terceirização.</p>
+                </div>
             </div>
 
             <div class="section-cta-block">
@@ -1482,6 +1932,7 @@
                     <div class="case-content">
                         <div class="case-meta">
                             <span class="case-segment">Astrologia Védica</span>
+                            <span class="case-service-tag"><i class="fas fa-layer-group"></i> Site + Painel Admin</span>
                         </div>
                         <h3 class="case-title">Renata Neme</h3>
 
@@ -1508,6 +1959,7 @@
                     <div class="case-content">
                         <div class="case-meta">
                             <span class="case-segment">Artesanato &amp; Alta Costura</span>
+                            <span class="case-service-tag"><i class="fas fa-layer-group"></i> Site</span>
                         </div>
                         <h3 class="case-title">Ateliê Lu Teixeira</h3>
 
@@ -1534,6 +1986,7 @@
                     <div class="case-content">
                         <div class="case-meta">
                             <span class="case-segment">Saúde &amp; Bem-Estar</span>
+                            <span class="case-service-tag"><i class="fas fa-layer-group"></i> Site</span>
                         </div>
                         <h3 class="case-title">Elisângela Terapeuta Integrativa</h3>
 
@@ -1561,25 +2014,25 @@
             <div class="section-header">
                 <span class="section-tag">Metodologia</span>
                 <h2 class="section-title">Do alinhamento estratégico à publicação em 4 <span>etapas</span></h2>
-                <p class="section-subtitle">Um processo transparente, simples e focado em entregar valor comercial e agilidade para o seu negócio.</p>
+                <p class="section-subtitle">Um processo transparente e simples, que funciona pra site, redes sociais ou anúncios — focado em entregar valor comercial e agilidade para o seu negócio.</p>
             </div>
 
             <div class="process-grid">
                 <div class="process-item">
                     <h3 class="process-title">Conversa Inicial</h3>
-                    <p class="process-text">Entrevista estratégica para mapear seus objetivos, público-alvo e as dores do seu nicho.</p>
+                    <p class="process-text">Mapeamos juntos seu objetivo e qual serviço faz mais sentido pro seu momento: site, redes sociais ou anúncios.</p>
                 </div>
                 <div class="process-item">
-                    <h3 class="process-title">Criação da Prévia</h3>
-                    <p class="process-text">Desenvolvimento do design, arquitetura da informação e copywriting persuasivo alinhado à sua marca.</p>
+                    <h3 class="process-title">Proposta e Estratégia</h3>
+                    <p class="process-text">Você recebe um plano personalizado, com prévia visual e prazo definido, sem enrolação.</p>
                 </div>
                 <div class="process-item">
-                    <h3 class="process-title">Ajustes Finos</h3>
-                    <p class="process-text">Validação completa em conjunto. Refinamos cada detalhe visual e de texto até a excelência.</p>
+                    <h3 class="process-title">Execução e Ajustes</h3>
+                    <p class="process-text">Desenvolvimento ou criação de conteúdo, sempre com sua validação em cada etapa.</p>
                 </div>
                 <div class="process-item">
-                    <h3 class="process-title">Publicação</h3>
-                    <p class="process-text">Configuração de SEO, testes de velocidade e lançamento oficial do site pronto para atrair clientes.</p>
+                    <h3 class="process-title">Lançamento e Acompanhamento</h3>
+                    <p class="process-text">Publicação oficial e suporte contínuo, garantindo que tudo funcione do jeito certo.</p>
                 </div>
             </div>
         </div>
@@ -1593,8 +2046,8 @@
                     <h2 class="section-title">Transformando código em clientes para o seu <span>negócio</span></h2>
                 </div>
                 <div class="about-text">
-                    <p>Sou <strong>Diogo Moreira</strong>, desenvolvedor web e estudante de Ciência da Computação na <strong>UNIFAL-MG</strong>. Crio sites para quem quer resultado, não só presença digital.</p>
-                    <p>Cada site que entrego tem um objetivo claro: fazer seu cliente te encontrar, confiar em você e entrar em contato. Simples assim.</p>
+                    <p>Sou <strong>Diogo Moreira</strong>, desenvolvedor web e estudante de Ciência da Computação na <strong>UNIFAL-MG</strong>. Ajudo negócios a crescerem no digital com sites, conteúdo e tráfego pago.</p>
+                    <p>Cada projeto que entrego tem um objetivo claro: fazer seu cliente te encontrar, confiar em você e entrar em contato. Simples assim.</p>
                     <p class="about-quote">Prazo combinado é prazo cumprido. Você fala direto comigo do início ao fim — sem surpresas, sem enrolação.</p>
                 </div>
                 <div class="section-cta-block" style="margin-top: 36px;">
@@ -1624,6 +2077,19 @@
                         <label for="segment" class="form-label">Segmento Profissional</label>
                         <input type="text" id="segment" name="segment" class="form-control" placeholder="Ex: Terapia, Advocacia, Clínica..." required>
                         <span class="field-error">Informe seu segmento para eu preparar a análise certa.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service" class="form-label">Qual serviço te interessa?</label>
+                        <select id="service" name="service" class="form-control" required>
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="Site">Site</option>
+                            <option value="Redes Sociais">Redes Sociais</option>
+                            <option value="Anúncios">Anúncios</option>
+                            <option value="Combo Completo">Combo Completo</option>
+                            <option value="Ainda não sei">Ainda não sei</option>
+                        </select>
+                        <span class="field-error">Selecione o serviço que você tem interesse.</span>
                     </div>
 
                     <div class="form-group">
@@ -1662,18 +2128,90 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5535999675196?text=Ol%C3%A1%20Diogo,%20gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20neg%C3%B3cio." class="whatsapp-floating" target="_blank" rel="noopener noreferrer" aria-label="Fale comigo diretamente no WhatsApp">
+    <a href="https://wa.me/5535999675196?text=Ol%C3%A1%20Diogo,%20gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20neg%C3%B3cio." class="whatsapp-floating" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="Fale comigo diretamente no WhatsApp">
         <i class="fab fa-whatsapp"></i>
+        <span class="wa-tooltip">Fale comigo agora</span>
     </a>
 
     <script>
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
         // Efeito do header ao rolar a página
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 30);
+            nav.classList.toggle('scrolled', window.scrollY > 80);
         }, { passive: true });
 
-        // Intersection Observer para animação suave dos elementos
+        // Barra de progresso de leitura
+        const progressBar = document.getElementById('scrollProgress');
+        function updateProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+        }
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+
+        // WhatsApp flutuante: só aparece depois do hero
+        const waFloat = document.getElementById('waFloat');
+        const heroEl = document.querySelector('.hero');
+        function toggleWaFloat() {
+            waFloat.classList.toggle('visible', window.scrollY > heroEl.offsetHeight * 0.6);
+        }
+        window.addEventListener('scroll', toggleWaFloat, { passive: true });
+        toggleWaFloat();
+
+        // Spotlight que segue o mouse no hero (desktop)
+        if (hasFinePointer && !reduceMotion) {
+            heroEl.addEventListener('mousemove', e => {
+                const rect = heroEl.getBoundingClientRect();
+                heroEl.style.setProperty('--sx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+                heroEl.style.setProperty('--sy', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+            });
+        }
+
+        // Borda com brilho seguindo o mouse nos cards de serviços e cases
+        if (hasFinePointer && !reduceMotion) {
+            document.querySelectorAll('.service-card, .case-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+                    card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+                });
+            });
+        }
+
+        // Contadores animados (social proof)
+        function animateCount(el) {
+            const target = parseInt(el.dataset.count, 10);
+            const suffix = el.dataset.suffix || '';
+            if (reduceMotion) {
+                el.textContent = target + suffix;
+                return;
+            }
+            const duration = 1500;
+            const start = performance.now();
+            el.textContent = '0' + suffix;
+            function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(eased * target) + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
+        const countObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCount(entry.target);
+                    countObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.4 });
+        document.querySelectorAll('.proof-number[data-count]').forEach(el => countObserver.observe(el));
+
+        // Intersection Observer para animação suave das seções
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1683,6 +2221,40 @@
             });
         }, { threshold: 0.08 });
         document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+        // Cascata (stagger) nos cards de cada grid
+        ['.grid-3', '.cases-grid', '.process-grid'].forEach(sel => {
+            document.querySelectorAll(sel).forEach(group => {
+                Array.from(group.children).forEach((child, i) => {
+                    child.classList.add('reveal-item');
+                    child.style.transitionDelay = (i * 90) + 'ms';
+                });
+            });
+        });
+        const itemObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    itemObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal-item').forEach(el => itemObserver.observe(el));
+
+        // Scroll-spy: destaca o link da seção visível na navbar
+        const spySections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        const spyObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        spySections.forEach(sec => spyObserver.observe(sec));
 
         // Menu Mobile Hamburguer
         const menuToggle = document.getElementById('menuToggle');
@@ -1706,7 +2278,7 @@
 
         // Validação inline (sem alert) + envio para o WhatsApp
         const form = document.getElementById('project-form');
-        const fields = ['name', 'segment', 'whatsapp', 'message'].map(id => document.getElementById(id));
+        const fields = ['name', 'segment', 'service', 'whatsapp', 'message'].map(id => document.getElementById(id));
 
         // limpa o erro assim que o usuário digita
         fields.forEach(field => {
@@ -1740,16 +2312,17 @@
                 return;
             }
 
-            const [name, segment, whatsapp, message] = fields;
+            const [name, segment, service, whatsapp, message] = fields;
             const submitBtn = this.querySelector('.btn-submit');
             const originalHTML = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-check"></i> Abrindo seu WhatsApp...';
             submitBtn.disabled = true;
 
-            const texto = `Olá Diogo! Vim pelo seu portfólio e quero um site para o meu negócio.
+            const texto = `Olá Diogo! Vim pelo seu portfólio e quero saber mais sobre os seus serviços.
 
 *Nome:* ${name.value.trim()}
 *Segmento:* ${segment.value.trim()}
+*Serviço de interesse:* ${service.value.trim()}
 *WhatsApp:* ${whatsapp.value.trim()}
 *Mensagem:* ${message.value.trim()}`;
 
