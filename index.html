@@ -781,34 +781,44 @@ h2 em {
 .process-grid p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.65; }
 
 .about {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: clamp(38px, 6vw, 76px);
-  align-items: center;
   max-width: 1000px;
 }
-.about-visual { position: relative; display: grid; place-items: center; min-height: 220px; }
-.portrait-wrap {
-  position: relative;
-  width: 184px;
-  height: 184px;
-  aspect-ratio: 1;
-  margin: 0 auto;
-  padding: 7px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: rgba(255,255,255,.025);
-}
-.portrait-wrap::before { position: absolute; inset: -22px; z-index: -1; border-radius: 28px; content: ""; background: radial-gradient(circle, rgba(212,170,120,.14), transparent 66%); }
-.portrait-frame { position: absolute; inset: 7px; overflow: hidden; border-radius: 14px; background: #14171f; }
-.portrait-frame img { display: block; width: 100%; height: 100%; aspect-ratio: 1; border-radius: 14px; object-fit: cover; object-position: 50% 16%; filter: saturate(.9) contrast(1.03); }
-.portrait-label { position: absolute; bottom: -18px; left: 50%; display: grid; gap: 3px; padding: 10px 13px; border: 1px solid var(--line-strong); border-radius: 10px; background: rgba(7,11,18,.94); box-shadow: 0 14px 35px rgba(0,0,0,.35); font-size: .67rem; font-weight: 750; white-space: nowrap; transform: translateX(-50%); }
-.portrait-label small { color: var(--mint); font-family: var(--mono); font-size: .53rem; font-weight: 500; }
 .about-copy h2 { margin-bottom: 22px; font-size: clamp(2.35rem, 4vw, 3.65rem); }
 .about-copy > p { margin: 0 0 17px; color: var(--muted); font-size: .95rem; line-height: 1.75; }
 .about-points { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
 .about-points span { padding: 10px 12px; border: 1px solid var(--line); border-radius: 999px; color: #cbd3da; font-size: .66rem; }
 .about-points span::first-letter { color: var(--mint); }
+
+.about.about-text-only {
+  display: block;
+  max-width: 1000px;
+}
+
+.about-text-only .about-copy {
+  position: relative;
+  max-width: 940px;
+  padding: clamp(30px, 5vw, 58px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+  box-shadow: 0 28px 70px rgba(0,0,0,.24);
+}
+
+.about-text-only .about-copy::after {
+  position: absolute;
+  top: -140px;
+  right: -120px;
+  width: 320px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  content: "";
+  background: radial-gradient(circle, rgba(212,170,120,.13), transparent 68%);
+  pointer-events: none;
+}
+
+.about-text-only .about-copy h2 { max-width: 850px; }
+.about-text-only .about-copy > p { max-width: 780px; }
 
 .faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(50px, 8vw, 120px); align-items: start; }
 .faq .section-heading { position: sticky; top: 120px; }
@@ -971,9 +981,7 @@ footer > span { justify-self: end; }
 
   .process-grid { grid-template-columns: 1fr 1fr; gap: 50px 0; }
   .process-grid article:nth-child(3) { padding-left: 0; border-left: 0; }
-  .about,
   .faq { grid-template-columns: 1fr; }
-  .about-visual { max-width: 520px; width: 100%; margin: 0 auto; }
   .faq .section-heading { position: static; }
   footer { grid-template-columns: 1fr auto; gap: 12px; }
   footer p { display: none; }
@@ -1044,10 +1052,7 @@ footer > span { justify-self: end; }
   .process-grid article > span { position: absolute; top: 0; left: 18px; transform: translateX(-50%); padding: 4px 0; background: #0a1019; }
   .process-grid article > i { display: none; }
   .process-grid h3 { padding-top: 3px; }
-  .about { gap: 42px; }
-  .about-visual { min-height: 200px; }
-  .portrait-wrap { width: 164px; height: 164px; }
-  .portrait-label { bottom: -18px; }
+  .about-text-only .about-copy { padding: 27px 23px; border-radius: 23px; }
   .about-points { gap: 7px; }
   .faq-list summary { grid-template-columns: 32px 1fr auto; font-size: .79rem; }
   .faq-list details p { margin-left: 44px; font-size: .76rem; }
@@ -1597,7 +1602,7 @@ diogo<span>.</span>dev</a>
 <small>Banco de dados</small>
 <small>Domínio próprio</small>
 </div>
-<strong>Conhecer projeto <i>↗</i>
+<strong>Visitar site <i>↗</i>
 </strong>
 </div>
 </a>
@@ -1627,7 +1632,7 @@ diogo<span>.</span>dev</a>
 <small>WhatsApp</small>
 <small>Responsivo</small>
 </div>
-<strong>Conhecer projeto <i>↗</i>
+<strong>Visitar site <i>↗</i>
 </strong>
 </div>
 </a>
@@ -1657,7 +1662,7 @@ diogo<span>.</span>dev</a>
 <small>Performance</small>
 <small>Agendamento</small>
 </div>
-<strong>Conhecer projeto <i>↗</i>
+<strong>Visitar site <i>↗</i>
 </strong>
 </div>
 </a>
@@ -1687,7 +1692,7 @@ diogo<span>.</span>dev</a>
 <small>SEO Google</small>
 <small>Conversão</small>
 </div>
-<strong>Conhecer projeto <i>↗</i>
+<strong>Visitar site <i>↗</i>
 </strong>
 </div>
 </a>
@@ -1820,22 +1825,14 @@ diogo<span>.</span>dev</a>
 </article>
 </div>
 </section>
-<section class="section about" id="sobre">
-<div class="about-visual" data-reveal="true">
-<div class="portrait-wrap">
-<div class="portrait-frame">
-<img src="assets/diogo.webp" alt="Diogo Moreira, desenvolvedor web" width="800" height="800" loading="lazy">
-</div>
-<span class="portrait-label">Diogo Moreira <small>Desenvolvedor Web</small>
-</span>
-</div>
-</div>
+<section class="section about about-text-only" id="sobre">
 <div class="about-copy" data-reveal="true">
 <span class="kicker">05 / Quem faz</span>
 <h2>Você fala <em>direto comigo</em>, do primeiro rascunho ao site no ar.</h2>
-<p>Sou Diogo Moreira, desenvolvedor web e estudante de Ciência da Computação na UNIFAL-MG. Crio sites para profissionais e negócios que querem ser vistos com mais confiança, clareza e autoridade.</p>
+<p>Sou Diogo Moreira, desenvolvedor web formado em Ciência da Computação pela UNIFAL-MG. Uno estratégia, design e desenvolvimento para criar sites que apresentam negócios com mais confiança, clareza e autoridade.</p>
 <div class="about-points">
 <span>✓ Contato direto</span>
+<span>✓ Formação em Ciência da Computação</span>
 <span>✓ Design exclusivo</span>
 <span>✓ Suporte pós-entrega</span>
 </div>
