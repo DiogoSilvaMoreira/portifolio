@@ -636,6 +636,99 @@ h2 em {
   background: rgba(11,17,27,.55);
 }
 
+.projects-toggle-wrap { display: none; }
+.js .projects-toggle-wrap { display: block; }
+
+.projects-toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding: 24px 26px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  color: var(--text);
+  background: linear-gradient(135deg, rgba(212,170,120,.09), rgba(255,255,255,.018) 48%, rgba(255,255,255,.028));
+  box-shadow: 0 24px 55px rgba(0,0,0,.2);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .25s ease, background .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.projects-toggle::before {
+  position: absolute;
+  inset: 0 auto 0 -28%;
+  width: 28%;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.07), transparent);
+  transform: skewX(-18deg);
+  transition: left .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.projects-toggle:hover {
+  border-color: rgba(212,170,120,.48);
+  background: linear-gradient(135deg, rgba(212,170,120,.13), rgba(255,255,255,.025) 48%, rgba(255,255,255,.04));
+  box-shadow: 0 30px 70px rgba(0,0,0,.28);
+  transform: translateY(-3px);
+}
+
+.projects-toggle:hover::before { left: 118%; }
+.projects-toggle:focus-visible { outline: 2px solid var(--mint); outline-offset: 4px; }
+
+.projects-toggle-number {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid rgba(212,170,120,.32);
+  border-radius: 14px;
+  color: var(--mint);
+  background: rgba(212,170,120,.06);
+  font-family: var(--mono);
+  font-size: .64rem;
+}
+
+.projects-toggle-copy { display: grid; gap: 4px; min-width: 0; }
+.projects-toggle-copy small { color: var(--mint); font-family: var(--mono); font-size: .55rem; letter-spacing: .12em; }
+.projects-toggle-copy strong { font-size: clamp(1.05rem, 2vw, 1.35rem); letter-spacing: -.035em; }
+.projects-toggle-copy em { color: var(--muted); font-size: .7rem; font-style: normal; }
+
+.projects-toggle-icon {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255,255,255,.025);
+  transition: border-color .25s ease, background .25s ease, transform .45s cubic-bezier(.2,.8,.2,1);
+}
+.projects-toggle-icon i { position: absolute; top: 50%; left: 50%; width: 13px; height: 1px; background: var(--mint); transform: translate(-50%,-50%); transition: transform .35s ease, opacity .25s ease; }
+.projects-toggle-icon i:last-child { transform: translate(-50%,-50%) rotate(90deg); }
+.projects.is-projects-open .projects-toggle-icon { border-color: rgba(212,170,120,.4); background: rgba(212,170,120,.08); transform: rotate(180deg); }
+.projects.is-projects-open .projects-toggle-icon i:last-child { opacity: 0; transform: translate(-50%,-50%) rotate(0); }
+
+.projects-drawer { margin-top: 70px; }
+.js .projects-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(34px);
+  transition: grid-template-rows .72s cubic-bezier(.2,.75,.2,1), margin-top .72s cubic-bezier(.2,.75,.2,1), opacity .42s ease, transform .65s cubic-bezier(.2,.75,.2,1);
+}
+.js .projects-drawer-inner { min-height: 0; overflow: hidden; }
+.js .projects.is-projects-open .projects-drawer {
+  grid-template-rows: 1fr;
+  margin-top: 70px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 .project-list { display: grid; gap: 90px; }
 
 .project-row {
@@ -1026,6 +1119,14 @@ footer > span { justify-self: end; }
 
   .projects,
   .process-section { width: 100%; padding-inline: 16px; }
+  .projects-toggle { gap: 12px; padding: 18px 16px; border-radius: 18px; }
+  .projects-toggle-number { width: 40px; height: 40px; border-radius: 12px; font-size: .58rem; }
+  .projects-toggle-copy { gap: 3px; }
+  .projects-toggle-copy small { font-size: .47rem; }
+  .projects-toggle-copy strong { font-size: 1rem; }
+  .projects-toggle-copy em { display: none; }
+  .projects-toggle-icon { width: 36px; height: 36px; }
+  .js .projects.is-projects-open .projects-drawer { margin-top: 44px; }
   .project-list { gap: 42px; }
   .project-row,
   .project-row:nth-child(even) { width: 94%; gap: 16px; margin-inline: auto; }
@@ -1575,6 +1676,19 @@ diogo<span>.</span>dev</a>
 </h2>
 <p>Explore projetos reais e veja como estratégia, identidade e tecnologia se encontram para comunicar valor em poucos segundos.</p>
 </div>
+<div class="projects-toggle-wrap" data-reveal="true">
+<button class="projects-toggle" id="projectsToggle" type="button" aria-expanded="false" aria-controls="projectsDrawer">
+<span class="projects-toggle-number">04</span>
+<span class="projects-toggle-copy">
+<small>PORTFÓLIO SELECIONADO</small>
+<strong data-projects-toggle-label>Ver projetos entregues</strong>
+<em>Sites reais, publicados e prontos para navegar</em>
+</span>
+<span class="projects-toggle-icon" aria-hidden="true"><i></i><i></i></span>
+</button>
+</div>
+<div class="projects-drawer" id="projectsDrawer">
+<div class="projects-drawer-inner">
 <div class="project-list">
 <a class="project-row from-left" data-reveal="true" href="https://www.renataneme.com.br/" target="_blank" rel="noopener noreferrer">
 <div class="project-visual violet">
@@ -1696,6 +1810,8 @@ diogo<span>.</span>dev</a>
 </strong>
 </div>
 </a>
+</div>
+</div>
 </div>
 </section>
 <section class="interactive-band" aria-label="Design interativo">
@@ -1997,6 +2113,29 @@ nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () =
   nav.classList.remove('is-open');
   menuButton?.setAttribute('aria-expanded', 'false');
 }));
+
+const projectsSection = document.getElementById('projetos');
+const projectsToggle = document.getElementById('projectsToggle');
+const projectsDrawer = document.getElementById('projectsDrawer');
+const projectsToggleLabel = projectsToggle?.querySelector('[data-projects-toggle-label]');
+
+if (projectsSection && projectsToggle && projectsDrawer) {
+  projectsDrawer.setAttribute('aria-hidden', 'true');
+  projectsDrawer.setAttribute('inert', '');
+
+  projectsToggle.addEventListener('click', () => {
+    const open = projectsSection.classList.toggle('is-projects-open');
+    projectsToggle.setAttribute('aria-expanded', String(open));
+    projectsDrawer.setAttribute('aria-hidden', String(!open));
+    projectsToggleLabel.textContent = open ? 'Fechar projetos entregues' : 'Ver projetos entregues';
+
+    if (open) {
+      projectsDrawer.removeAttribute('inert');
+    } else {
+      projectsDrawer.setAttribute('inert', '');
+    }
+  });
+}
 
 const marketShowcase = document.querySelector('.market-showcase');
 const rotateHint = document.querySelector('.rotate-hint');
