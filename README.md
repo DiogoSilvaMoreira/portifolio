@@ -1,19 +1,22 @@
 # Portfólio — Diogo Moreira
 
-Site profissional em arquivo único (`index.html`) + imagens otimizadas em `assets/`.
+Site profissional estático: `index.html` + `styles.css` + `site.js`, com imagens otimizadas em `assets/`.
 
 ## Estrutura
-- `index.html` — site completo (HTML + CSS + JS embutidos)
-- `assets/` — imagens em WebP otimizadas (~78 KB no total)
+- `index.html` — marcação semântica + metadados de SEO/Open Graph + JSON-LD
+- `styles.css` — estilos (identidade preta, branca e azul)
+- `site.js` — menu mobile, header no scroll e animações de entrada (reveal)
+- `assets/` — logo e imagens em WebP/PNG otimizadas
 
 ## Como publicar
 ```bash
 git add -A
-git commit -m "Nova versão do portfólio: mobile aprimorado, automações & IA, fotos reais"
+git commit -m "feat: aplica novo portfólio profissional"
 git push origin main
 ```
 
 ## Onde editar rápido
-- **Preços**: buscar `class="val"` no index.html
 - **WhatsApp**: buscar `5535999675196`
-- **Nichos do mockup animado**: buscar `const demos`
+- **Logo**: `assets/logo-diogo.png`
+- **Faixa de serviços (ticker)**: buscar `ticker-group` no index.html
+- **Projetos**: buscar `class="project"` no index.html
